@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Sep  2 19:01:59 2019
-
 @author: lucas
 """
 
@@ -52,7 +51,7 @@ Created on Mon Sep  2 19:01:59 2019
 #19  0 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  1  1  0  0  1 -
 #20  0 0 0 0 0 0 0 0 0 0 0  0  0  0  0  0  0  1  1  1  0 -
 
-"""
+
 G = [[0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
      [1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
      [0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -74,7 +73,7 @@ G = [[0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1],
      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1],
      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0]]
-"""
+
 
 # Grafo exemplo para busca em profundidade
 """
@@ -120,6 +119,7 @@ def visita(u):
     c[u] = 'g'
     time = time + 1
     d[u] = time
+    sucesso = False
     
     pos = 0
     for i in G[u]:
@@ -129,12 +129,11 @@ def visita(u):
                 if pos == 20:
                     return True
                 sucesso = visita(pos)
-                return sucesso
         pos = pos + 1
     c[u] = 'b'
     time = time + 1
     f[u] = time
-    return False
+    return sucesso
 
 c = []
 for i in range(n):
@@ -269,4 +268,4 @@ while sucesso == False:
     if c[index] == 'w':
         sucesso = visita(index, limite, 0)
         limite = limite + 1
-    index = index + 1
+index = index + 1
